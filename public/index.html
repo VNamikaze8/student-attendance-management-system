@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>Student Attendance Management System</h1>
+        <p>Manage Students and Track Attendance</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Student Registration</h2>
+
+            <form id="studentForm">
+                <div class="form-row">
+                    <input type="text" id="rollNumber"
+                        placeholder="Enter Roll Number" required>
+
+                    <input type="text" id="studentName"
+                        placeholder="Enter Student Name" required>
+
+                    <input type="text" id="department"
+                        placeholder="Enter Department" required>
+                </div>
+
+                <button type="submit" id="saveButton">
+                    Add Student
+                </button>
+
+                <button type="button" id="cancelButton"
+                    class="cancel-btn" hidden>
+                    Cancel
+                </button>
+            </form>
+
+            <p id="message" role="status"></p>
+        </section>
+
+        <section class="card">
+            <h2>Registered Students</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Roll Number</th>
+                            <th>Student Name</th>
+                            <th>Department</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+<section class="card">
+    <h2>Monthly Attendance Report</h2>
+
+    <div class="report-controls">
+        <div>
+            <label for="reportMonth">Select Month</label>
+            <input type="month" id="reportMonth">
+        </div>
+
+        <div>
+            <label for="attendanceThreshold">
+                Minimum Attendance (%)
+            </label>
+            <input type="number"
+                   id="attendanceThreshold"
+                   value="75"
+                   min="0"
+                   max="100">
+        </div>
+
+        <button type="button" id="generateReport">
+            Generate Report
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No.</th>
+                    <th>Student Name</th>
+                    <th>Working Periods</th>
+                    <th>Present</th>
+                    <th>Absent</th>
+                    <th>Attendance %</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="monthlyReportTable"></tbody>
+        </table>
+    </div>
+
+    <p id="reportMessage" role="status"></p>
+</section>
+
+<section class="card">
+    <h2>Daily Attendance</h2>
+
+    <div class="attendance-controls">
+        <label for="attendanceDate">
+            Select Date:
+        </label>
+
+        <input type="date" id="attendanceDate">
+
+        <button type="button" id="markPresent">
+            Mark All Present
+        </button>
+
+        <button type="button" id="markAbsent">
+            Mark All Absent
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No.</th>
+                    <th>Student</th>
+                    <th>P1</th>
+                    <th>P2</th>
+                    <th>P3</th>
+                    <th>P4</th>
+                    <th>P5</th>
+                    <th>P6</th>
+                    <th>P7</th>
+                </tr>
+            </thead>
+
+            <tbody id="attendanceTable"></tbody>
+        </table>
+    </div>
+
+    <div class="attendance-actions">
+        <button type="button" id="saveAttendance">
+            Save Attendance
+        </button>
+        <p id="attendanceMessage" role="status"></p>
+    </div>
+</section>
+</body>
+</html>
+
+<section class="card">
+    <h2>Attendance Reports</h2>
+
+    <h3>Individual Student Report</h3>
+
+    <div class="report-controls">
+        <div>
+            <label for="studentReportSelect">
+                Select Student
+            </label>
+            <select id="studentReportSelect">
+                <option value="">Select Student</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="studentReportMonth">
+                Select Month
+            </label>
+            <input type="month" id="studentReportMonth">
+        </div>
+
+        <button type="button" id="viewStudentReport">
+            View Student Report
+        </button>
+    </div>
+
+    <div id="studentReportResult"></div>
+
+    <hr>
+
+    <h3>Daily Attendance History</h3>
+
+    <div class="report-controls">
+        <div>
+            <label for="historyDate">
+                Select Date
+            </label>
+            <input type="date" id="historyDate">
+        </div>
+
+        <button type="button" id="viewHistory">
+            View Attendance History
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No.</th>
+                    <th>Student</th>
+                    <th>P1</th>
+                    <th>P2</th>
+                    <th>P3</th>
+                    <th>P4</th>
+                    <th>P5</th>
+                    <th>P6</th>
+                    <th>P7</th>
+                </tr>
+            </thead>
+
+            <tbody id="historyTable"></tbody>
+        </table>
+    </div>
+
+    <p id="historyMessage" role="status"></p>
+
+    <hr>
+
+    <h3>Export Monthly Report</h3>
+
+    <p>Download the monthly attendance report as a CSV file.</p>
+
+    <button type="button" id="downloadCSV">
+        Download CSV Report
+    </button>
+
+    <p id="exportMessage" role="status"></p>
+</section>
